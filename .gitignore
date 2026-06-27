@@ -1,0 +1,11 @@
+# Swap files
+*.swp
+*.swo
+*.swn
+
+# Backup files
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
