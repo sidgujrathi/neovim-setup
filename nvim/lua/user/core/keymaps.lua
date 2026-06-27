@@ -1,5 +1,3 @@
-vim.g.mapleader = '\\'
-
 vim.keymap.set('i', '<C-L>', '<Esc>')
 vim.keymap.set('v', '<C-L>', '<Esc>')
 
