@@ -105,15 +105,28 @@ vim.keymap.set('n', '<leader>x', ':SomeCommand<CR>', { silent = true })
 
 ```
 ~/.config/nvim/
-├── init.lua                  Entry point — bootstraps lazy.nvim, loads core + plugins
+├── init.lua                  Entry point — loads config/lazy.lua
 ├── init.vim.bak              Original Vimscript config (reference only)
-└── lua/user/
-    ├── core/
-    │   ├── options.lua       Editor settings (line numbers, tabs, search, etc.)
-    │   └── keymaps.lua       All key bindings
-    └── plugins/
-        └── init.lua          Plugin specs for lazy.nvim (plugins + configs)
+└── lua/
+    ├── config/
+    │   └── lazy.lua          Bootstrap lazy.nvim, setup plugins, load core
+    ├── plugins/
+    │   ├── colorscheme.lua   Gruvbox (default) + dracula + iceberg + devicons
+    │   ├── nvim-tree.lua     File explorer
+    │   ├── telescope.lua     Fuzzy finder
+    │   ├── lualine.lua       Statusline
+    │   ├── coc.lua           LSP / autocomplete
+    │   ├── gitsigns.lua      Git signs in gutter
+    │   ├── fugitive.lua      Git commands
+    │   ├── autopairs.lua     Auto-close brackets
+    │   ├── treesitter.lua    Modern syntax highlighting
+    │   └── editorconfig.lua  EditorConfig support
+    └── user/core/
+        ├── options.lua       Editor settings (line numbers, tabs, search, etc.)
+        └── keymaps.lua       All key bindings
 ```
+
+Each file in `lua/plugins/` returns a lazy.nvim spec table. Files are auto-discovered and merged by lazy.nvim. No manual `require` needed.
 
 ## Lazy-loading Strategy
 
