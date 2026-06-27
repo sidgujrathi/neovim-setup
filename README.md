@@ -66,27 +66,23 @@ nvim
 
 ## Changing Theme
 
-Edit `nvim/lua/user/plugins/init.lua`. Replace the gruvbox block:
+In `nvim/lua/plugins/colorscheme.lua`, replace gruvbox block with desired theme:
 
 ```lua
--- Iceberg
-require('lazy').setup('user.plugins', {
-  install = { colorscheme = { 'iceberg' } },
-})
--- Then in the gruvbox block, change the config function:
-config = function()
-  vim.cmd.colorscheme('iceberg')
-end,
+-- Replace the gruvbox spec block with:
+{ 'cocopon/iceberg.vim', config = function() vim.cmd.colorscheme('iceberg') end },
+-- or keep dracula active via:
+:colorscheme dracula
 ```
 
 Or activate from within Neovim: `:colorscheme dracula`
 
 ## Customization
 
-**Add a plugin:** Append entry to `plugins/init.lua`:
+**Add a plugin:** Create file in `lua/plugins/your-plugin.lua`:
 
 ```lua
-{
+return {
   'author/plugin-name',
   event = 'BufReadPre',
   opts = { ... },
